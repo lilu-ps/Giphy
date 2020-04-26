@@ -1,11 +1,7 @@
 import * as CONSTANTS from "./config.js";
 import { GiphyHandler } from "./GiphyHandlerClass.js";
-// import * as constants from "./config.js";
-// let defaultList = constants.defaultList;
 //global variable for GiphyHandler class
 let giphHandlr; 
-// let defaultList = ["Internet Cats", "Meme's", "Typing", "Space", "Rick and Morty"];
-
 /*
     By default, it is fired when the entire page loads,
     including its content, meaning that 5 default buttons 

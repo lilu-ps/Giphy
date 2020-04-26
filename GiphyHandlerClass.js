@@ -80,6 +80,18 @@ export class GiphyHandler{
         }, false);
     
         let xbutton = document.createElement("BUTTON");
+        this._addXButtonAttributes(xbutton, filterKey);
+    
+        item.appendChild(butt);
+        item.appendChild(xbutton);
+    
+        document.getElementById("button-list").append(item);
+    }
+    
+    /*
+     *  Sets id, value, inner html and event listener to the delete button. 
+     */
+    async _addXButtonAttributes(xbutton, filterKey){
         xbutton.setAttribute('class', 'delete-button');
         xbutton.innerHTML = 'x';
         xbutton.value = "delete";
@@ -88,13 +100,7 @@ export class GiphyHandler{
         xbutton.addEventListener("click",function(){
             clickHandler(xbutton.value, xButtonId);
         }, false);
-    
-        item.appendChild(butt);
-        item.appendChild(xbutton);
-    
-        document.getElementById("button-list").append(item);
     }
-    
     
     /*
      * Adds the value of the new button of the buttonList that is saved in localStorage.
