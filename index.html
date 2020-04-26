@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="responsive.css">
-  <link rel="stylesheet" href="script.js">
+  <script type="module" src="./script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Document</title>
 
@@ -22,30 +22,31 @@
         </div>
     </header>
 
+    <!-- Here we have the list of items that were alread searched (first five are default) -->
     <section class="old-search-section">
         <div class="container">
-            <div class="old-search-buttons">
-                <!-- initial search buttons -->
-                <button type="submit">Internet Cats</button>
-                <button type="submit">Meme's</button>
-                <button type="submit">Typing</button>
-                <button type="submit">Space</button>
-                <button type="submit">Rick and Morty</button>
-       </div>
+            <!-- Items to this div will be added by the function addButtonFromStorage in external js file -->
+            <div class="old-search-buttons" id="button-list"></div>
         </div>
     </section>
+    <!-- This is the lookup section that consists of a search bar, submit button and the trending button -->
     <section class="look-up-section">
         <div class="container">
             <div class="look-up-items">
-                <input type="text" placeholder="Search here..." class="search-bar">
-                <button type="submit" class="submit-search">Submit</button>
-                <button type="trending" class="trend-search">See what's trending</button>
+                <input type="text"  id="input" placeholder="Search here..." class="search-bar">
+                <button id = "submit-id" value="Submit" type="submit" class="submit-search" >Submit</button>
+                <button id = "trend-id" value="trending" type="submit" class="trend-search" >See what's trending</button>
             </div>
         </div>
     </section>
 
+    <!-- giphs to this section will be added/renewed once the user has looked up a certain theme -->
     <section class="giph-section">
-        <div class="container"></div>
+        <div class="container">
+            <div class="giph-items" id="giphy-items"></div>
+        </div>
     </section>
+
+ 
 </body>
 </html>

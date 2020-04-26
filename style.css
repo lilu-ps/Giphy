@@ -6,10 +6,9 @@
 
 .container {
     margin: auto;
-    /* padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px; */
+    padding-left : 10px;
 }
+
 
 button{
     padding: 0.25rem 0.5rem;
@@ -17,8 +16,8 @@ button{
     line-height: 1.5;
     border-radius: 0.2rem;
     border: 1px solid transparent;
-    /* transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
 }
+
 
 .search-bar{
     height:30px;
@@ -45,7 +44,7 @@ button{
 
 .look-up-items{
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 h1{
@@ -55,10 +54,63 @@ h1{
     line-height: 1.2;
     color: inherit;
     font-size: 2.5rem;
-    /* margin-top: 0; */
     display: block;
-    /* margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px; */
+}
+
+.old-search-item{
+    display:inline-flex;
+
+    position: relative;
+}
+
+.delete-button {
+    position: absolute;
+    top:0px;
+    right:0px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 7px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    display: none;
+}
+
+button:hover + .delete-button, .delete-button:hover {
+    display: inline-block;
+}
+
+button:focus, button.focus {
+    outline:0;
+    box-shadow: 0 0 0 0.2rem  #B0D4F7;
+}
+
+.submit-search:focus, .submit-search.focus{
+    box-shadow: 0 0 0 0.2rem  #BEECC9;
+}
+
+
+.trend-search:focus, .trend-search.focus{
+    box-shadow: 0 0 0 0.2rem  #ECBEC1;
+}
+
+img{
+    height:200px;
+}
+
+.giphy-item{
+    display: inline-flex;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.giph-items{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top : 20px;
+    width:1200px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
