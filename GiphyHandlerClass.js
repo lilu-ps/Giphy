@@ -7,7 +7,11 @@ export class GiphyHandler{
         this.api_key = api_key;
     }
 
-  
+    
+    /*
+    * Gets the value of the giphs that user wants to look up,
+    * fetches the items, then adds the giph and it's rating to giphy-item.
+    */
     async search(url, value){
         let bigDiv = document.getElementById("giphy-items");
         bigDiv.innerHTML = "";
@@ -20,11 +24,19 @@ export class GiphyHandler{
 
                let width = json.data[i].images.fixed_height_small_still.width;
                let inner = '<img src="' + curUrl + '">';
+
                let item = document.createElement("div");
                item.setAttribute('class', 'giphy-item');
                item.setAttribute('value', curUrl);
                item.style = "width:" + width + ";";
+
+               let div = document.createElement("div");
+               div.setAttribute('class', 'rating');
+               div.innerHTML = "Rating: " + json.data[i].rating;
+               div.style = "width:" + width + ";";
+
                item.innerHTML = inner;
+               item.append(div);
                bigDiv.append(item);
             }
         });
@@ -43,8 +55,8 @@ export class GiphyHandler{
         document.getElementById("input").value = "";
         if (buttons.includes(filterKey) || CONSTANTS.defaultList.includes(filterKey)) return;
 
-        this.addButtonWithVal(filterKey);
-        this.addButtonToStorage(filterKey);
+        this._addButtonWithVal(filterKey);
+        this._addButtonToStorage(filterKey);
         // this.search("https://api.giphy.com/v1/gifs/search?",filterKey);
     }
     
@@ -54,7 +66,7 @@ export class GiphyHandler{
      * value and another delete button. Both of those buttons are added to 
      * old-search-item and the old-search-item itself is added to button-list div.
      */
-    async addButtonWithVal(filterKey){
+    async _addButtonWithVal(filterKey){
         let item = document.createElement("div");
         item.setAttribute('class', 'old-search-item');
     
@@ -88,7 +100,7 @@ export class GiphyHandler{
      * Adds the value of the new button of the buttonList that is saved in localStorage.
      * This way, when the site is refreshed, all the additional buttons will appear.
      */
-    async addButtonToStorage  (buttonVal) {
+    async _addButtonToStorage  (buttonVal) {
         var buttons = JSON.parse(localStorage.getItem('buttonList')) || [];
         buttons.push(buttonVal);
         localStorage.setItem('buttonList', JSON.stringify(buttons));
@@ -120,14 +132,10 @@ export class GiphyHandler{
         var length = buttons.length;
         for (var i = 0; i < length; i++){
             var curVal = buttons[i];
-            this.addButtonWithVal(curVal);
+            this._addButtonWithVal(curVal);
         }
     }
-    
-    async handleClick(url, value){
-        giphHandlr.search(url, value);
-    }
-
+   
     /*
      * When red x button is clicked on top of some old search button,
      * the function removes that said old search button (from the local storage as well).
